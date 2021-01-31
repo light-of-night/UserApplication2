@@ -1,0 +1,74 @@
+<script>
+    $(function () {
+
+        // （1）、单击进入数据表格
+        $("#user_manager_btn").click(function () {
+            //初始化按钮--   引入（数据你表格）页面片段
+            var options = $("#user_manager_btn").linkbutton("options")
+            addTab(options, "/commons/user/userdatagrid.html")
+        })
+
+        //（2）、用户管理
+        $("#user_location_btn").click(function () {
+            var options = $("#user_location_btn").linkbutton("options")
+            addTab(options, "/commons/charts/userLocation.html")
+        })
+
+        //（3）、板块负载
+        $("#user_load_btn").click(function () {
+            var options = $("#user_load_btn").linkbutton("options")
+            addTab(options, "/commons/charts/userLoad.html")
+        })
+
+        //(4)、地域的分布
+        $("#user_chinamap_btn").click(function () {
+            var options = $("#user_chinamap_btn").linkbutton("options")
+            addTab(options, "/commons/charts/userdistribution.html")
+        })
+        //(5)、testMap
+        $("#user_testmap_btn").click(function () {
+            var options = $("#user_testmap_btn").linkbutton("options")
+            addTab(options, "/commons/charts/testmap.html")
+        })
+
+
+        //引入 页面的自定义方法
+        function addTab(options, url) {
+            if (!$("#center_content_tabs").tabs('exists', options.text)) {
+                $("#center_content_tabs").tabs('add', {
+                    title: options.text,
+                    fit: true,
+                    closable: true,
+                    iconCls: options.iconCls,
+                    href: url
+                })
+            } else {
+                $("#center_content_tabs").tabs("select", options.text)
+            }
+        }
+    })
+
+
+</script>
+
+
+<div class="easyui-accordion" data-options="fit:true">
+
+    <!--（1）、第一个版块-->
+    <div title="用户管理" data-options="iconCls:'icon-man',selected:true">
+        <a id="user_manager_btn" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true,width:'100%'">用户管理</a>
+        <a id="user_location_btn" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true,width:'100%'">用户分布</a>
+        <a id="user_load_btn" class="easyui-linkbutton"
+           data-options="iconCls:'icon-print',plain:true,width:'100%'">板块负载</a>
+        <a id="user_chinamap_btn" class="easyui-linkbutton"
+           data-options="iconCls:'icon-large-chart',plain:true,width:'100%'">地域分布</a>
+        <a id="user_testmap_btn" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true,width:'100%'">testMap</a>
+    </div>
+
+    <div title="库存管理" data-options="iconCls:'icon-logo'">
+    </div>
+
+
+    <div title="系统参数">
+    </div>
+</div>
